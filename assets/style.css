@@ -1,0 +1,734 @@
+/* General Styles */
+body {
+    font-family: 'Open Sans, Arial, San-serif';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+
+/* Header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0; /* Ensures the header is fixed at the very top */
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for better visibility */
+}
+
+/* Logo Styling */
+.logo {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    padding-top: 7px;
+    margin-right: 10px;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f4f4f4;
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: #00bcd4;
+}
+
+/* Navigation Menu Styling */
+.navmenu {
+    margin-right: 20px;
+}
+
+.navmenu ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navmenu ul li {
+    margin: 0 10px;
+    position: relative;
+}
+
+.navmenu ul li a {
+    text-decoration: none;
+    color: #f4f4f4;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+    display: block;
+}
+
+.navmenu ul li a:hover {
+    color: #00bcd4;
+    border-bottom: 2px solid #00bcd4;
+}
+
+/* Sign Up and Search Icon Styling */
+.navmenu ul li a img {
+    width: 20px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 5px;
+    filter: invert(100%); /* Makes the icon white */
+}
+
+.navmenu ul li:last-child a img {
+    width: 18px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 0;
+    filter: invert(100%); /* Makes the icon white */
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo {
+        margin: 0;
+    }
+
+    .navmenu {
+        margin: 0;
+    }
+
+    .navmenu ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navmenu ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .navmenu ul li a {
+        padding: 10px;
+    }
+}
+
+
+/* Social Media Section */
+#Social-M, #home {
+    background-color: #444;
+    padding: 5px 0;
+    margin-top: 50px; /* Adjust this value to match the height of the header */
+}
+
+#Social-M .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* padding: 0 1px; */
+    text-align: center;
+}
+
+.social-l {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-l a {
+    text-decoration: none;
+    color: #f4f4f4;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.social-l a img {
+    width: 20px;
+    height: auto;
+    margin-right: 5px;
+    filter: invert(100%);
+}
+
+.social-l a:hover {
+    color: #00bcd4;
+}
+
+
+/* First Social Medial Responsive style */
+@media (max-width: 768px) {
+    #Social-M {
+        padding: 15px 0;
+    }
+    .social-l {
+        flex-direction: column;
+    }
+    .social-l a {
+        font-size: 1rem;
+    }
+}
+
+
+/* Hero Section Styling */
+#home {
+    width: 90%;
+    height: 50vh;
+    margin: 5px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* Hero Section */
+.hero {
+    width: 90%;
+    height: 90%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Slider */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 100%;
+    opacity: 0;
+    transition: all 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide.active {
+    left: 0;
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 130vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: brightness(0.7); /* Dim background for better caption visibility */
+}
+
+/* Caption Styling */
+.caption {
+    width: 100%;
+    max-width: 1200px;
+    color: #fff;
+    text-align: justify;
+    z-index: 2;
+    padding: 20px;
+    /*background-color: rgba(0, 0, 0, 0.5); /* Optional: Semi-transparent background */
+    /* border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); */
+}
+
+.caption h2, .caption p {
+    margin: 10px 0;
+    line-height: 1.5;
+    width: 100%;
+    text-align: center;
+}
+
+/* Button Styling */
+.btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #007acc;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 25px;
+    z-index: 3;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #fff;
+    color: #007acc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #home {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .hero {
+        width: 95%;
+        height: 90%;
+    }
+
+    .caption {
+        font-size: 0.9rem;
+        padding: 15px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* About Section */
+#about {
+    background-color: #580404;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60vh;
+}
+
+#about h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-pics {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    border-radius: 25%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    padding-left: 10px;
+    margin-bottom: 100px;
+}
+
+.about-text {
+    max-width: 600px;
+    margin-left: 25%;
+    color: #555;
+    text-align: center;
+    justify-content: center;
+    line-height: 0.5rem;
+}
+
+.about-text h3 {
+    font-size: 2rem;
+    color: #007acc;
+    /* margin-bottom: -15px; */
+}
+
+.about-text h4 {
+    font-size: 1.5rem;
+    color: #c0afeb;
+    margin-bottom: 30px;
+}
+
+.about-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #fff;
+}
+
+#about .btn {
+    margin-top: 20px;
+    background-color: #007acc;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#about .btn:hover {
+    background-color: #fff;
+    color: #007acc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-pics {
+        margin-bottom: 20px;
+        padding-left: 0;
+    }
+
+    .about-text {
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    #about h2 {
+        font-size: 2rem;
+    }
+
+    .about-text h3 {
+        font-size: 1.8rem;
+    }
+
+    .about-text h4 {
+        font-size: 1.3rem;
+    }
+
+    .about-text p {
+        font-size: 0.95rem;
+    }
+}
+
+
+/* Skills Section */
+#skills {
+    background-color: #f5f5f5;
+    /* padding: 30px 0; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#skills h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.skills-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allows wrapping when more cards are added */
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+.skill {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    flex: 0 1 20%; /* Fixes 4 cards in a row with space between */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill h3 {
+    font-size: 1.2rem;
+    color: #007acc;
+    margin-bottom: 15px;
+}
+
+.skill p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.skill:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .skill {
+        flex: 0 1 48%; /* Adjusts to 2 cards in a row */
+    }
+}
+
+@media (max-width: 768px) {
+    .skill {
+        flex: 1 1 100%; /* Adjusts to 1 card in a row */
+    }
+}
+
+
+/* Portfolio Section Styling */
+#portfolio {
+    background-color: #0b6afa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#portfolio h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.portfolio-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 30px;
+}
+
+.project {
+    position: relative;
+    width: 30%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.project:hover {
+    transform: translateY(-10px);
+}
+
+.project h3 {
+    margin: 20px;
+    font-size: 1.5rem;
+    color: #007acc;
+}
+
+.project p {
+    margin: 20px;
+    font-size: 1rem;
+    color: #555;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.project a {
+    display: block;
+    margin: 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007acc;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.project:hover p,
+.project:hover a {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project {
+        width: 100%;
+    }
+
+    #portfolio h2 {
+        font-size: 2rem;
+    }
+}
+
+
+
+/* Tutorials Section */
+#tutorials {
+    /* padding: 40px 0; */
+    background-color: #f9f9f9;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#tutorials h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.tutorials-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev-btn {
+    margin-right: 10px;
+}
+
+.next-btn {
+    margin-left: 10px;
+}
+
+.tutorials-wrapper {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.tutorial-slide {
+    min-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex: 0 1 20%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.tutorial {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tutorial iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.tutorial h3 {
+    font-size: 1.5rem;
+    color: #007acc;
+    margin-bottom: 10px;
+}
+
+.tutorial p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.tutorial:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Full-Screen Video */
+.fullscreen-btn {
+    background-color: #007acc;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.fullscreen-btn:hover {
+    background-color: #005f99;
+}
+
+.tutorial iframe:fullscreen {
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .tutorial {
+        width: 48%;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-btn {
+        font-size: 1.5rem;
+        padding: 8px 16px;
+    }
+
+    .tutorial {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+

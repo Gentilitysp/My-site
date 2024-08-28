@@ -10,7 +10,8 @@
     <!-- Header -->
     <header>
         <div id="logo" class="logo">
-            <a href=""><img src="/assets/img/myLogo.png" alt="My logo"></a>
+            <a href=""><img src="assets/img/myLogo.png" alt="Logo" style="width: 40px; height: auto;"></a>
+            <a href="">GTG - Gentility Tech Global</a>
         </div>
         <nav id="navmenu" class="navmenu">
             <ul>
@@ -30,37 +31,65 @@
     </header> 
 
     <!-- Social Links -->
-    <section id="Social-Medial">
+    <section id="Social-M">
         <div class="container">
-            <div class="social-links">
+            <div class="social-l">
                 <a href="#"><img src="assets/icons/linkedin-130.png" alt="Linkedin">Linkedin</a>
                 <a href="#"><img src="assets/icons/github-logo-6532.png" alt="Github">Github</a>
-                <a href="#"><img src="assets/icons/twitter-x-logo-black-square-rounded-20852.png" alt="X">Twitter</a>
+                <a href="#"><img src="assets/icons/twitter-x-logo-black-square-rounded-20852.png" alt="Twitter">Twitter</a>
                 <a href="#"><img src="assets/icons/whatsapp-logo-4456.png" alt="Whatsapp">Whatsapp</a>
             </div>
         </div>
     </section>
     
+
     <!-- Hero Section -->
-     <section id="home">
+    <section id="home">
         <div class="hero">
-            <h2>Data Analyst | Backend Developer | Project Manger</h2>
-            <p>Unlocking the power of data, building robust backend web solutions, building businesses and managing projects.</p>
+            <div class="hero-slider">
+                <div class="slide active">
+                    <img src="assets/img/IMG-20231001-WA0022.jpg" alt="Slide 1">
+                    <div class="caption">
+                        <h2>Data Analyst | Backend Developer | Project Manager</h2>
+                        <p>Unlocking the power of data, building robust backend web solutions, businesses, and managing projects.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/IMG-20231001-WA0027.jpg" alt="Slide 2">
+                    <div class="caption">
+                        <h2>Your Second Headline</h2>
+                        <p>Your second slide description.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="assets/img/IMG-20231001-WA0040.jpg" alt="Slide 3">
+                    <div class="caption">
+                        <h2>Your Third Headline</h2>
+                        <p>Your third slide description.</p>
+                    </div>
+                </div>
+                <!-- Add more slides as needed -->
+            </div>
             <a href="#portfolio" class="btn">Explore My Work</a>
         </div>
-     </section>
+    </section>    
+    
+    
     
      <!-- About Section -->
      <section id="about">
         <div class="container">
             <h2>About Me</h2>
-            <img src="assets/img/My Profile Pix.jpg" alt="My Picture" class="profile-pics">
-            <h3>Ugbordiegwu Chimaijem S.</h3>
-            <h4>CEO Gentility Tech Global</h4>
-            <p>I am an Engineer (Mechanical), a seasoned Data Analyst and Backend Developer with <br> over 5 years of diverse experience in data analysis and over 1+ years in backend development. <br>I also mentor aspiring data analysts, guiding them through the complexities of data and helping them develop their skills. <br> With certification in Business Innovation (MiniMBA), SCRUM Fundamentals, Cybersecurity Basic</p>
-            <a href="#portfolio" class="btn">Explore My Work</a>
+            <div class="about-content">
+                <img src="assets/img/My Profile Pix.jpg" alt="My Picture" class="profile-pics">
+                <div class="about-text">
+                    <h3>Ugbordiegwu Chimaijem S.</h3>
+                    <h4>CEO, Gentility Tech Global</h4>
+                    <p>An Engineer (Mechanical), a seasoned Data Analyst and Backend Developer with over 5 years of diverse experience in data analysis and over 1+ years in backend development. Also mentor to aspiring data analysts, guiding them through the complexities of data and helping them develop their skills. Certified in Business Innovation (MiniMBA), SCRUM Fundamentals, and Cybersecurity Basics etc.</p>
+                </div>
+            </div>
         </div>
-     </section>
+    </section>
 
      <!-- Skills Section -->
       <section id="skills">
@@ -77,7 +106,7 @@
                 </div>
                 <div class="skill">
                     <h3>Project Management</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste expedita asperiores culpa ipsa dolorem sint placeat cupiditate eos distinctio iusto eligendi error nesciunt consectetur voluptate repudiandae, quibusdam cumque ut ipsum?</p>
+                    <p>Agile Scrum Methodology</p>
                 </div>
                 <div class="skill">
                     <h3>Tutoring</h3>
@@ -88,7 +117,7 @@
       </section>
 
     <!-- Portolio Section -->
-     <section id="portfolio">
+     <<section id="portfolio">
         <div class="container">
             <h2>Portfolio</h2>
             <div class="portfolio-grid">
@@ -105,60 +134,69 @@
                 <div class="project">
                     <h3>Project Management</h3>
                     <p>Team Lead design and development of Alaigbo Youth Forum website</p>
-                    <a href="www.alaigboyouthforum.org">View Project</a>
+                    <a href="https://www.alaigboyouthforum.org">View Project</a>
                 </div>
+                <!-- Add more projects as needed -->
             </div>
         </div>
-     </section>
+    </section>
+    
     
     <!-- Tutorials Section -->
-     <section id="tutorials">
+     <!-- Tutorials Section -->
+    <section id="tutorials">
         <div class="container">
             <h2>Tutorials</h2>
-            <div class="tutorials-list">
-                <div class="tutorial">
-                    <h3>Tutorial 1</h3>
-                    <p>Description of the tutorial.</p>
-                    <a href="#">Read more or watch video</a>
+            <div class="tutorials-carousel">
+                <button class="carousel-btn prev-btn">&#10094;</button>
+                <div class="tutorials-wrapper">
+                    <div class="tutorial-slide">
+                        <div class="tutorial">
+                            <iframe src="assets/videos/VID-20240720-WA0001.mp4" frameborder="0" allowfullscreen class="lazy-load"></iframe>
+                            <h3>Tutorial 1</h3>
+                            <p>Description of the tutorial.</p>
+                            <button class="fullscreen-btn">Full Screen</button>
+                        </div>
+                        <div class="tutorial">
+                            <iframe src="https://player.vimeo.com/video/975351736" frameborder="0" allowfullscreen class="lazy-load"></iframe>
+                            <h3>Tutorial 2</h3>
+                            <p>Description of the tutorial.</p>
+                            <button class="fullscreen-btn">Full Screen</button>
+                        </div>
+                        <div class="tutorial">
+                            <iframe src="assets/videos/VID-20240808-WA0015.mp4" frameborder="0" allowfullscreen class="lazy-load"></iframe>
+                            <h3>Tutorial 3</h3>
+                            <p>Description of the tutorial.</p>
+                            <button class="fullscreen-btn">Full Screen</button>
+                        </div>
+                    </div>
+                    <div class="tutorial-slide">
+                        <div class="tutorial">
+                            <iframe src="https://vimeo.com/975351736" frameborder="0" allowfullscreen class="lazy-load"></iframe>
+                            <h3>Tutorial 4</h3>
+                            <p>Description of the tutorial.</p>
+                            <button class="fullscreen-btn">Full Screen</button>
+                        </div>
+                        <div class="tutorial">
+                            <iframe src="https://www.youtube.com/embed/your-video-id5" frameborder="0" allowfullscreen class="lazy-load"></iframe>
+                            <h3>Tutorial 5</h3>
+                            <p>Description of the tutorial.</p>
+                            <button class="fullscreen-btn">Full Screen</button>
+                        </div>
+                        <div class="tutorial">
+                            <iframe src="https://player.vimeo.com/video/your-video-id6" frameborder="0" allowfullscreen class="lazy-load"></iframe>
+                            <h3>Tutorial 6</h3>
+                            <p>Description of the tutorial.</p>
+                            <button class="fullscreen-btn">Full Screen</button>
+                        </div>
+                    </div>
+                    <!-- Add more slides as needed -->
                 </div>
-                <div class="tutorial">
-                    <h3>Tutorial 2</h3>
-                    <p>Description of the tutorial.</p>
-                    <a href="#">Read more or watch video</a>
-                </div>
-                <div class="tutorial">
-                    <h3>Tutorial 3</h3>
-                    <p>Description of the tutorial.</p>
-                    <a href="#">Read more or watch video</a>
-                </div>
+                <button class="carousel-btn next-btn">&#10095;</button>
             </div>
         </div>
-     </section>
+    </section>
 
-    <!-- Testimonials Section -->
-     <section id="testimonials">
-        <div class="container">
-            <h2>Testimonials</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial">
-                    <p>"Chimaijem has been an exceptional mentor. His tutorial skill is second to none"</p>
-                    <h4>Student Name</h4>
-                </div>
-                <div class="testimonial">
-                    <p>"Chimaijem is a tutor others should embrace his teaching skills. He made python look so simple and easy to learn"</p>
-                    <h4>Student Name</h4>
-                </div>
-                <div class="testimonial">
-                    <p>"He is reliable and trustworth. In two different occasions, he delivers task timely"</p>
-                    <h4>Client A</h4>
-                </div>
-                <div class="testimonial">
-                    <p>"His backend solutions are robust and reliable. Highly recommended!"</p>
-                    <h4>Client B</h4>
-                </div>
-            </div>
-        </div>
-     </section>
 
     <!-- Blog Section -->
      <section id="blog">
@@ -227,3 +265,42 @@
      </footer>
 </body>
 </html>
+
+
+
+<!-- JavaScript -->
+<script>
+    document.querySelectorAll('.fullscreen-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const iframe = button.previousElementSibling;
+        if (iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+        } else if (iframe.mozRequestFullScreen) { // Firefox
+            iframe.mozRequestFullScreen();
+        } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+            iframe.webkitRequestFullscreen();
+        } else if (iframe.msRequestFullscreen) { // IE/Edge
+            iframe.msRequestFullscreen();
+        }
+    });
+});
+
+
+</script>
+
+
+const lazyIframes = document.querySelectorAll('.lazy-load');
+
+    const iframeObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                const iframe = entry.target;
+                iframe.src = iframe.dataset.src;
+                observer.unobserve(iframe);
+            }
+        });
+    }, { rootMargin: '200px' });
+
+    lazyIframes.forEach(iframe => {
+        iframeObserver.observe(iframe);
+    });
