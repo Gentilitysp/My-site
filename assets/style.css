@@ -598,12 +598,14 @@ header {
 
 /* Tutorials Section */
 #tutorials {
-    /* padding: 40px 0; */
+    padding: 50px 0;
     background-color: #f9f9f9;
     position: relative;
     overflow: hidden;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
 }
 
 #tutorials h2 {
@@ -613,59 +615,29 @@ header {
     margin-bottom: 40px;
 }
 
-.tutorials-carousel {
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-}
-
-.carousel-btn {
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: #fff;
-    font-size: 2rem;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-    z-index: 10;
-}
-
-.carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.prev-btn {
-    margin-right: 10px;
-}
-
-.next-btn {
-    margin-left: 10px;
-}
-
+/* Carousel Wrapper */
 .tutorials-wrapper {
     display: flex;
-    overflow: hidden;
+    overflow: hidden; /* Hide scroll bar */
     width: 100%;
+    scroll-behavior: smooth;
 }
 
 .tutorial-slide {
-    min-width: 100%;
     display: flex;
+    flex-shrink: 0;
+    width: calc(3.4); /*4 videos fully visible + part of the 5th*/
     justify-content: space-between;
-    flex: 0 1 20%;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.3s ease;
+    gap: 30px;
 }
 
 .tutorial {
     background-color: #fff;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    box-sizing: border-box;
+    flex: 0 1 100%; /* Each video/card takes full width of its container */
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -693,42 +665,283 @@ header {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Full-Screen Video */
-.fullscreen-btn {
-    background-color: #007acc;
+/* Carousel Buttons */
+.carousel-btn {
+    background-color: rgba(0, 0, 0, 0.5);
     border: none;
     color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
+    font-size: 2rem;
+    padding: 10px 20px;
     cursor: pointer;
-    margin-top: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.fullscreen-btn:hover {
-    background-color: #005f99;
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-.tutorial iframe:fullscreen {
-    width: 100%;
-    height: 100%;
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-    .tutorial {
-        width: 48%;
+@media (max-width: 1024px) {
+    .tutorial-slide {
+        width: calc(100% / 2.5); /* Adjust to 2 videos fully visible + part of the 3rd */
     }
-}
-
-@media (max-width: 768px) {
     .carousel-btn {
         font-size: 1.5rem;
         padding: 8px 16px;
     }
+}
 
-    .tutorial {
-        width: 100%;
-        margin-bottom: 20px;
+@media (max-width: 768px) {
+    .tutorial-slide {
+        width: 100%; /* Only one video fully visible at a time */
+    }
+    .carousel-btn {
+        display: none; /* Hides carousel buttons on small screens */
     }
 }
 
+
+/* Blog Section */
+#blogs {
+    padding: 30px 0;
+    background-color: #777;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#blogs h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+/* Carousel Wrapper */
+.blogs-wrapper {
+    display: flex;
+    overflow: hidden; /* Hide scroll bar */
+    width: 100%;
+    scroll-behavior: smooth;
+}
+
+.blogs-slide {
+    display: flex;
+    flex-shrink: 0;
+    width: calc(8); /* Adjust based on the number of slides */
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+    gap: 30px;
+}
+
+.blog-posts {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    flex: 0 1 calc(20.666% - 30px); /* 6 posts visible */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-posts img,
+.blog-posts iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.blog-posts h3 {
+    font-size: 1.5rem;
+    color: #007acc;
+    margin-bottom: 10px;
+}
+
+.blog-posts p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.blog-posts:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.readMore-btn,
+.fullscreen-btn {
+    background-color: #007acc;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.readMore-btn:hover,
+.fullscreen-btn:hover {
+    background-color: #005f99;
+}
+
+/* Carousel Buttons */
+.carousel-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-btn:hover {
+    background-color: rgba(183, 172, 172, 0.8);
+}
+
+.prev-btn {
+    left: 5px;
+}
+
+.next-btn {
+    right: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .blog-posts {
+        flex: 0 1 calc(33.333% - 30px); /* 3 posts visible */
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-posts {
+        flex: 0 1 calc(50% - 30px); /* 2 posts visible */
+    }
+    .carousel-btn {
+        font-size: 1.5rem;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #blogs h2 {
+        font-size: 2rem;
+    }
+
+    .blog-posts {
+        flex: 0 1 100%; /* 1 post visible */
+    }
+
+    .blog-posts h3 {
+        font-size: 1.2rem;
+    }
+
+    .blog-posts p {
+        font-size: 0.9rem;
+    }
+
+    .carousel-btn {
+        display: none; /* Hide buttons on very small screens */
+    }
+}
+
+
+
+
+
+
+
+/* Testimonials Section */
+#testimonials {
+    padding: 60px 0;
+    background-color: #007acc;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+#testimonials h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.testimonials-slider {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.testimonial {
+    min-width: 100%;
+    transition: transform 0.5s ease-in-out;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.testimonial p {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.testimonial h4 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.testimonials-nav {
+    margin-top: 20px;
+}
+
+.testimonials-nav button {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    margin: 0 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.testimonials-nav button:hover {
+    background-color: #fff;
+    color: #007acc;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    #testimonials h2 {
+        font-size: 2rem;
+    }
+
+    .testimonial p {
+        font-size: 1rem;
+    }
+}
