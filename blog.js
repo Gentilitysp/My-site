@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const postTitle = document.getElementById('post-title');
     const postImage = document.getElementById('post-image');
+    const postVideo = document.getElementById('post-video');
     const postContent = document.getElementById('post-content');
 
     if (id && blogPostsData[id]) {
@@ -86,11 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
         postTitle.textContent = post.title;
         postImage.src = post.image;
         postImage.alt = post.title;
+        postVideo.src = post.video;
+        postVideo.alt = post.title;
         postContent.innerHTML = post.content;
     } else {
         // Handle case when id is missing or invalid
         postTitle.textContent = 'Blog Post Not Found';
         postImage.style.display = 'none';
+        postVideo.style.display = 'none';
         postContent.innerHTML = '<p>The blog post you are looking for does not exist.</p>';
     }
 

@@ -1,4 +1,3 @@
-// carousel.js
 document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.querySelector('.next-btn');
     const prevBtn = document.querySelector('.prev-btn');
@@ -8,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const postWidth = blogPosts[0].clientWidth + 30; // width + gap
     let currentIndex = 0;
     let autoSlideInterval;
-    const autoSlideTime = 7000; // 7 seconds
+    const autoSlideTime = 6000; // 6 seconds
 
     // Function to update the carousel position
     function updateCarousel() {
@@ -40,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.innerWidth <= 480) return 1;
         if (window.innerWidth <= 768) return 2;
         if (window.innerWidth <= 1024) return 3;
-        return 8; // Default for larger screens
+        return 4; // Default for larger screens
     }
 
     // Event Listeners for buttons
@@ -114,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCarousel();
 });
 
-
 // Handle "Read More" Button Clicks
 document.querySelectorAll('.readMore-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -122,7 +120,6 @@ document.querySelectorAll('.readMore-btn').forEach(btn => {
         window.location.href = `blog.html?id=${id}`;
     });
 });
-
 
 // Initialize Swiper
 const swiper = new Swiper('.swiper-container', {
@@ -161,4 +158,3 @@ document.querySelectorAll('.readMore-btn').forEach(btn => {
         window.location.href = `blog.html?id=${id}`;
     });
 });
-
