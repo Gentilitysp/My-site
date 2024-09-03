@@ -1,27 +1,58 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const testimonials = document.querySelector('.testimonials-slider');
-    const prevButton = document.querySelector('.testimonial-prev');
-    const nextButton = document.querySelector('.testimonial-next');
-    const slides = document.querySelectorAll('.testimonial');
-    let currentIndex = 0;
+    const testimonials = document.querySelector('.testimonials-grid');
+    const prevButton = document.querySelector('.test-prev-btn');
+    const nextButton = document.querySelector('.test-next-btn');
+    const cards = document.querySelectorAll('.testimonial-card');
+    let startIndex = 0;
+    const visibleCardsCount = 4;
+
+    function updateGrid() {
+        // Hide all cards initially
+        cards.forEach(card => {
+            card.style.display = 'none';
+        });
+
+        // Show the next set of cards starting from startIndex
+        for (let i = startIndex; i < startIndex + visibleCardsCount; i++) {
+            if (cards[i]) {
+                cards[i].style.display = 'block';
+            }
+        }
+    }
 
     function showSlide(index) {
-        testimonials.style.transform = `translateX(-${index * 100}%)`;
+        startIndex = index;
+        updateGrid();
     }
 
     prevButton.addEventListener('click', function () {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
-        showSlide(currentIndex);
+        if (startIndex - 2 >= 0) {
+            startIndex -= 2; // Move backward by 2 cards
+        } else {
+            startIndex = Math.max(0, cards.length - visibleCardsCount); // Go to the last full set
+        }
+        showSlide(startIndex);
     });
 
     nextButton.addEventListener('click', function () {
-        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-        showSlide(currentIndex);
+        if (startIndex + visibleCardsCount < cards.length) {
+            startIndex += 2; // Move forward by 2 cards
+        } else {
+            startIndex = 0; // Reset to the beginning if at the end
+        }
+        showSlide(startIndex);
     });
 
-    // Optional: Auto-slide feature
+    // Auto-slide feature
     setInterval(function () {
-        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-        showSlide(currentIndex);
-    }, 5000); // Change every 5 seconds
+        if (startIndex + visibleCardsCount < cards.length) {
+            startIndex += 2; // Move forward by 2 cards
+        } else {
+            startIndex = 0; // Reset to the beginning if at the end
+        }
+        showSlide(startIndex);
+    }, 7000); // Change every 7 seconds
+
+    // Initial grid update
+    updateGrid();
 });

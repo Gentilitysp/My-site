@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const nextBtn = document.querySelector('.next-btn');
-    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.blog-next-btn');
+    const prevBtn = document.querySelector('.blog-prev-btn');
     const blogsSlide = document.querySelector('.blogs-slide');
     const blogPosts = document.querySelectorAll('.blog-posts');
     const totalPosts = blogPosts.length;

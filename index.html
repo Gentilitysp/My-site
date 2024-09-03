@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentility Tech Global</title>
     <link rel="stylesheet" href="/assets/style.css?v=1.1">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
 <body>
     <!-- Header -->
     <header>
         <div id="logo" class="logo">
-            <a href=""><img src="assets/img/myLogo.png" alt="Logo" style="width: 40px; height: auto;"></a>
+            <a href=""><img src="assets/img/myLogo.png" alt="Logo"></a>
             <a href="">GTG - Gentility Tech Global</a>
         </div>
         <nav id="navmenu" class="navmenu">
@@ -18,18 +19,22 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Skills</a></li>
-                <li><a href="#">portfolio</a></li>
+                <li><a href="#">Portfolio</a></li>
                 <li><a href="#">Tutorials</a></li>
                 <li><a href="#">Services</a></li>
-                <li><a href="#">Testimonials</a></li>
                 <li><a href="#">Blog</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="#"><img src="assets/icons/user-6767 (1).png" alt="">Sign up</a></li>
-                <li><a href="#"><img src="/assets/icons/search-2903 (1).png" alt=""></a></li>
+                <li><a href="#"><img src="assets/icons/user-6767 (1).png" alt="User">Sign up</a></li>
+                <li><a href="#"><img src="/assets/icons/search-2903 (1).png" alt="Search"></a></li>
             </ul>
         </nav>
-    </header> 
-
+        <div id="menu-toggle" class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    
     <!-- Social Links -->
     <section id="Social-M">
         <div class="container">
@@ -212,7 +217,7 @@
         <div class="container">
             <h2>Blogs</h2>
             <div class="swiper-container blogs-carousel">
-                <button class="carousel-btn prev-btn">&#10094;</button>
+                <button class="blog-btn blog-prev-btn">&#10094;</button>
                 <div class="swiper-wrapper blogs-wrapper">
                     <div class="blogs-slide">
                         <div class="swiper-slide blog-posts" data-id="1">
@@ -266,7 +271,7 @@
                         <!-- Add more blog-posts here with unique data-id attributes -->
                     </div>
                 </div>
-                <button class="carousel-btn next-btn">&#10095;</button>
+                <button class="blog-btn blog-next-btn">&#10095;</button>
             </div>
         </div>
     </section>
@@ -300,47 +305,89 @@
         </div>
      </section>
 
-    <!-- Testimonials Section -->
     <section id="testimonials">
-        <div class="container">
+        <div class="container testimonials-container">
             <h2>Testimonials</h2>
-            <div class="testimonials-slider">
-                <div class="testimonial">
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <img src="assets/img/IMG-20231001-WA0027.jpg" alt="Student A">
                     <p>"Chimaijem has been an exceptional mentor. His tutorial skill is second to none."</p>
                     <h4>Student Name</h4>
                 </div>
-                <div class="testimonial">
+                <div class="testimonial-card">
+                    <img src="assets/img/IMG-20231001-WA0027.jpg" alt="Student B">
                     <p>"Chimaijem is a tutor others should embrace his teaching skills. He made Python look so simple and easy to learn."</p>
                     <h4>Student Name</h4>
                 </div>
-                <div class="testimonial">
+                <div class="testimonial-card">
+                    <img src="assets/img/IMG-20231001-WA0027.jpg" alt="Client A">
                     <p>"He is reliable and trustworthy. On two different occasions, he delivered tasks timely."</p>
                     <h4>Client A</h4>
                 </div>
-                <div class="testimonial">
+                <div class="testimonial-card">
+                    <img src="assets/img/IMG-20231001-WA0027.jpg" alt="Client B">
                     <p>"His backend solutions are robust and reliable. Highly recommended!"</p>
                     <h4>Client B</h4>
                 </div>
+                <div class="testimonial-card">
+                    <img src="assets/img/IMG-20231001-WA0027.jpg" alt="Client A">
+                    <p>"He is reliable and trustworthy. On two different occasions, he delivered tasks timely."</p>
+                    <h4>Student C</h4>
+                </div>
+                <div class="testimonial-card">
+                    <img src="assets/img/IMG-20231001-WA0027.jpg" alt="Client B">
+                    <p>"His backend solutions are robust and reliable. Highly recommended!"</p>
+                    <h4>Client C</h4>
+                </div>
             </div>
-            <div class="testimonials-nav">
-                <button class="testimonial-prev">&#10094;</button>
-                <button class="testimonial-next">&#10095;</button>
-            </div>
+            <button class="test-prev-btn">Prev</button>
+            <button class="test-next-btn">Next</button>
         </div>
     </section>
 
 
     <!-- Footer -->
-     <footer>
-        <div class="container">
-            <p>&copy; 2024 Gentility Tech Global. All Right Reserved.</p>
-            <a href=""><img src="assets/img/myLogo.png" alt="Logo"></a>
-            <a href="">Back to Top</a>
+<footer>
+    <div class="container footer-container">
+        <div class="footer-logo">
+            <a href="/"><img src="assets/img/myLogo.png" alt="Gentility Tech Global Logo"></a>
+            <a href="/" class="company-name">Gentility Tech Global</a>
         </div>
-     </footer>
+        
+        <div class="footer-nav">
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-social">
+            <ul>
+                <li><a href="#"><img src="assets/icons/linkedin-130.png" alt="LinkedIn"></a></li>
+                <li><a href="#"><img src="assets/icons/twitter-x-logo-black-square-rounded-20852.png" alt="Twitter"></a></li>
+                <li><a href="#"><img src="assets/icons/whatsapp-logo-4456.png" alt="WhatsApp"></a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <p>Email: <a href="mailto:engrchimaijem@gmail.com">engrchimaijem@gmail.com</a></p>
+            <p>Phone: <a href="tel:+2348160188661">+234 816 018 8661</a></p>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Gentility Tech Global. All Rights Reserved.</p>
+            <a href="#" class="back-to-top">Back to Top</a>
+        </div>
+    </div>
+</footer>
+
+    
      
      <script src="carousel.js?v=1.1"></script>
      <script src="testimonial.js"></script>
+     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 </html>
 
@@ -425,4 +472,5 @@
                 });
             }, 15000); // Auto-scroll every 15 seconds
         });
+    
 </script>
