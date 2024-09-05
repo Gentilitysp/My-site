@@ -296,15 +296,16 @@
                 </div>
                 <button type="submit">Send Message</button>
             </form>
-            <div class="social-links">
+            <!-- <div class="social-links">
                 <a href="#"><img src="assets/icons/linkedin-130.png" alt="Linkedin">Linkedin</a>
                 <a href="#"><img src="assets/icons/github-logo-6532.png" alt="Github">Github</a>
                 <a href="#"><img src="assets/icons/twitter-x-logo-black-square-rounded-20852.png" alt="X">Twitter</a>
                 <a href="#"><img src="assets/icons/whatsapp-logo-4456.png" alt="Whatsapp">Whatsapp</a>
-            </div>
+            </div> -->
         </div>
      </section>
 
+     <!-- Testimonials Section -->
     <section id="testimonials">
         <div class="container testimonials-container">
             <h2>Testimonials</h2>
@@ -398,79 +399,75 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const tutorialsWrapper = document.querySelector('.tutorials-wrapper');
-        const tutorialSlides = document.querySelectorAll('.tutorial-slide');
+        const tutorialSlide = document.querySelector('.tutorial-slide');
+        const tutorialCards = document.querySelectorAll('.tutorial');
         const prevBtn = document.querySelector('.prev-btn');
         const nextBtn = document.querySelector('.next-btn');
-        
-        let scrollAmount = 0;
 
-        // Determine the width of each slide based on the visible number of slides
-        const slideWidth = tutorialSlides[0].getBoundingClientRect().width + parseInt(window.getComputedStyle(tutorialSlides[0]).marginRight);
+        let currentIndex = 0;
+        let visibleCards = 3.5; // Default for larger screens
+        let totalCards = tutorialCards.length;
 
-        // Function to scroll the carousel left or right
-        function scrollCarousel(direction) {
-            if (direction === 'next') {
-                scrollAmount += slideWidth;
-                if (scrollAmount >= tutorialsWrapper.scrollWidth - tutorialsWrapper.clientWidth) {
-                    scrollAmount = tutorialsWrapper.scrollWidth - tutorialsWrapper.clientWidth;
-                }
-            } else if (direction === 'prev') {
-                scrollAmount -= slideWidth;
-                if (scrollAmount < 0) {
-                    scrollAmount = 0;
-                }
+        // Function to determine the number of visible cards based on screen size
+        function calculateVisibleCards() {
+            const screenWidth = window.innerWidth;
+
+            if (screenWidth <= 450) {
+                visibleCards = 1.2; // For small screens
+            } else if (screenWidth <= 768) {
+                visibleCards = 2.5; // For medium screens
+            } else {
+                visibleCards = 3.5; // For large screens
             }
 
-            tutorialsWrapper.scrollTo({
-                top: 0,
-                left: scrollAmount,
-                behavior: 'smooth'
+            // Set the correct flex-basis for the cards based on the screen size
+            tutorialCards.forEach(card => {
+                card.style.flex = `0 0 calc(100% / ${visibleCards})`;
+                card.style.maxWidth = `calc(100% / ${visibleCards})`;
             });
         }
 
-        // Add event listeners to the carousel buttons
-        nextBtn.addEventListener('click', function () {
-            scrollCarousel('next');
-        });
+        // Function to calculate total width of all slides
+        function getSlideWidth() {
+            return tutorialCards[0].getBoundingClientRect().width + parseInt(window.getComputedStyle(tutorialCards[0]).marginRight);
+        }
 
-        prevBtn.addEventListener('click', function () {
-            scrollCarousel('prev');
-        });
+        // Scroll the carousel to the next set of slides
+        function scrollCarousel(direction) {
+            const slideWidth = getSlideWidth();
 
-        // Add swipe functionality using touch events
-        let startX = 0;
-
-        tutorialsWrapper.addEventListener('touchstart', function (e) {
-            startX = e.touches[0].clientX;
-        });
-
-        tutorialsWrapper.addEventListener('touchmove', function (e) {
-            const touch = e.touches[0];
-            const moveX = touch.clientX - startX;
-
-            if (moveX > 25) { // Swipe right
-                scrollCarousel('prev');
-                startX = touch.clientX; // Reset startX to enable continuous swiping
-            } else if (moveX < -25) { // Swipe left
-                scrollCarousel('next');
-                startX = touch.clientX; // Reset startX to enable continuous swiping
+            if (direction === 'next') {
+                currentIndex++;
+                if (currentIndex > totalCards - visibleCards) {
+                    currentIndex = 0; // Loop back to start
+                }
+            } else if (direction === 'prev') {
+                currentIndex--;
+                if (currentIndex < 0) {
+                    currentIndex = totalCards - Math.ceil(visibleCards); // Loop to the last set of slides
+                }
             }
+
+            tutorialSlide.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        }
+
+        // Add event listeners for buttons
+        nextBtn.addEventListener('click', () => scrollCarousel('next'));
+        prevBtn.addEventListener('click', () => scrollCarousel('prev'));
+
+        // Recalculate visible cards and slide widths on window resize
+        window.addEventListener('resize', function () {
+            calculateVisibleCards();
         });
+
+        // Initial setup
+        calculateVisibleCards();
 
         // Optional: Auto-scroll the carousel if needed
         setInterval(() => {
-                if (scrollAmount >= tutorialsWrapper.scrollWidth - tutorialsWrapper.clientWidth) {
-                    scrollAmount = 0; // Reset to the beginning when reaching the end
-                } else {
-                    scrollAmount += slideWidth;
-                }
+            scrollCarousel('next');
+        }, 10000); // Auto-scroll every 10 seconds
+    });
 
-                tutorialsWrapper.scrollTo({
-                    top: 0,
-                    left: scrollAmount,
-                    behavior: 'smooth'
-                });
-            }, 15000); // Auto-scroll every 15 seconds
-        });
-    
+
 </script>

@@ -857,47 +857,46 @@ header {
 
 /* Tutorials Section */
 #tutorials {
-    padding: 50px 0;
-    background-color: #f9f9f9;
+    padding: 10px 0;
+    background-color: #999;
     position: relative;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* width: 100%; */
+    overflow: hidden;
 }
 
 #tutorials h2 {
     text-align: center;
     font-size: 2.5rem;
-    color: #333;
+    color: #007acc;
     margin-bottom: 40px;
 }
 
 /* Carousel Wrapper */
 .tutorials-wrapper {
     display: flex;
-    overflow: hidden; /* Hide scroll bar */
+    overflow: hidden;
     width: 100%;
+    position: relative;
     scroll-behavior: smooth;
 }
 
 .tutorial-slide {
     display: flex;
-    flex-shrink: 0;
-    width: calc(3.4); /*4 videos fully visible + part of the 5th*/
-    justify-content: space-between;
-    transition: transform 0.3s ease;
-    gap: 30px;
+    gap: 20px; /* Spacing between videos */
+    transition: transform 0.5s ease;
 }
 
+/* Individual Tutorial Cards */
 .tutorial {
-    background-color: #fff;
+    background-color: #f6f6f6;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    flex: 0 1 100%; /* Each video/card takes full width of its container */
+    box-shadow: 0 4px 15px rgba(170, 11, 11, 0.1);
     text-align: center;
+    flex: 0 0 calc(100% / 3.5); /* 3.5 videos on large screens */
+    max-width: calc(100% / 3.5); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -906,6 +905,7 @@ header {
     height: 200px;
     border-radius: 10px;
     margin-bottom: 15px;
+    justify-content: center;
 }
 
 .tutorial h3 {
@@ -953,24 +953,30 @@ header {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .tutorial-slide {
-        width: calc(100% / 2.5); /* Adjust to 2 videos fully visible + part of the 3rd */
+@media (max-width: 450px) {
+    .tutorial {
+        flex: 0 0 calc(100% / 1.5); /* Show 1.5 cards on small screens */
+        max-width: calc(100% / 1.5);
     }
     .carousel-btn {
-        font-size: 1.5rem;
-        padding: 8px 16px;
+        display: none; /* Hide buttons on small screens */
     }
 }
 
 @media (max-width: 768px) {
-    .tutorial-slide {
-        width: 100%; /* Only one video fully visible at a time */
-    }
-    .carousel-btn {
-        display: none; /* Hides carousel buttons on small screens */
+    .tutorial {
+        flex: 0 0 calc(100% / 2.5); /* Show 2.5 cards on medium screens */
+        max-width: calc(100% / 2.5);
     }
 }
+
+@media (min-width: 1025px) {
+    .tutorial {
+        flex: 0 0 calc(100% / 3.5); /* Show 3.5 cards on larger screens */
+        max-width: calc(100% / 3.5);
+    }
+}
+
 
 
 /* Blog Section */
@@ -1358,6 +1364,7 @@ header {
     padding-bottom: 30px;
     background-color: #741515;
     position: relative;
+    overflow: hidden;
 }
 
 #testimonials h2 {
@@ -1414,24 +1421,26 @@ header {
 /* Next & Prev Button styling */
 .test-next-btn, .test-prev-btn {
     position: absolute;
-    bottom: 10px;
-    width: 40px;
-    height: 30px;
+    top: 50%;
+    transform: translateY(-50%);
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 25%;
-    padding: 5px;
+    border-radius: 50%;
+    padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
 }
 
 .test-next-btn {
-    right: 30px; /* Positioned to the far right */
+    right: 20px; /* Positioned to the far right */
 }
 
 .test-prev-btn {
@@ -1443,7 +1452,7 @@ header {
 }
 
 /* Responsive Design */
-@media (max-width: 490px) and (max-width: 768px) {
+@media (max-width: 768px) {
     #testimonials h2 {
         font-size: 2rem;
     }
@@ -1454,6 +1463,11 @@ header {
 
     .testimonial-card h4 {
         font-size: 1.15rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr); /* Show 2 cards instead of 4 */
+        gap: 20px;
     }
 
     /* Next & Prev Button */
@@ -1470,7 +1484,7 @@ header {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
     #testimonials h2 {
         font-size: 1.75rem;
     }
@@ -1484,7 +1498,7 @@ header {
     }
 
     .testimonials-grid {
-        grid-template-columns: repeat(2, 1fr); /* Show 1 card on extra small screens */
+        grid-template-columns: repeat(3, 1fr); /* Show 1 card on extra small screens */
     }
 
     /* Next and Prev Button */
@@ -1501,21 +1515,21 @@ header {
     }
 }
 
-@media (max-width: 350px) and (max-width: 470px) {
+@media (max-width: 450px) {
     #testimonials h2 {
         font-size: 1.5rem;
     }
 
     .testimonial-card p {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
     .testimonial-card h4 {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
 
     .testimonials-grid {
-        grid-template-columns: repeat(1, 1fr); /* Show 1 card on extra small screens */
+        grid-template-columns: repeat(2, 1fr); /* Show 1 card on extra small screens */
     }
 
     /* Next and Prev Button */
