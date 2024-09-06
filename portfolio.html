@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+    
+<body>
+    <!-- Header -->
+    <header>
+        <div id="logo" class="logo">
+            <a href=""><img src="assets/img/myLogo.png" alt="Logo"></a>
+            <a href="">GTG - Gentility Tech Global</a>
+        </div>
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#about">About Me</a></li>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="/#tutorials">Tutorials</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#"><img src="assets/icons/user-6767 (1).png" alt="User">Sign up</a></li>
+                <li><a href="#"><img src="/assets/icons/search-2903 (1).png" alt="Search"></a></li>
+            </ul>
+        </nav>
+        <div id="menu-toggle" class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    
+    <!-- Social Links -->
+    <section id="Social-M">
+        <div class="container">
+            <div class="social-l">
+                <a href="#"><img src="assets/icons/linkedin-130.png" alt="Linkedin">Linkedin</a>
+                <a href="#"><img src="assets/icons/github-logo-6532.png" alt="Github">Github</a>
+                <a href="#"><img src="assets/icons/twitter-x-logo-black-square-rounded-20852.png" alt="Twitter">Twitter</a>
+                <a href="#"><img src="assets/icons/whatsapp-logo-4456.png" alt="Whatsapp">Whatsapp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio-page">
+        <div class="container">
+            <div class="main-project">
+                <h2 id="main-project-title">Data Analysis Project 1</h2>
+                <p id="main-project-description"></p>
+                <a href="#" id="main-project-link">Visit Project</a>
+            </div>
+
+            <h3>Related Projects</h3>
+            <div class="related-projects">
+                <div class="project">
+                    <h3>Data Analysis Project 1</h3>
+                    <p>Description of the project</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="project">
+                    <h3>Backend Development Project</h3>
+                    <p>Description of the project</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="project">
+                    <h3>Project Management</h3>
+                    <p>Team Lead design and development of Alaigbo Youth Forum website</p>
+                    <a href="https://www.alaigboyouthforum.org">View Project</a>
+                </div>
+                <!-- Add more projects as needed -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <a href="/"><img src="assets/img/myLogo.png" alt="Gentility Tech Global Logo"></a>
+             <a href="/" class="company-name">Gentility Tech Global</a>
+         </div>
+        
+            <div class="footer-nav">
+             <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        
+            <div class="footer-social">
+                <ul>
+                    <li><a href="#"><img src="assets/icons/linkedin-130.png" alt="LinkedIn"></a></li>
+                    <li><a href="#"><img src="assets/icons/twitter-x-logo-black-square-rounded-20852.png" alt="Twitter"></a></li>
+                    <li><a href="#"><img src="assets/icons/whatsapp-logo-4456.png" alt="WhatsApp"></a></li>
+                 </ul>
+            </div>
+
+            <div class="footer-contact">
+                <p>Email: <a href="mailto:engrchimaijem@gmail.com">engrchimaijem@gmail.com</a></p>
+                <p>Phone: <a href="tel:+2348160188661">+234 816 018 8661</a></p>
+            </div>
+        
+            <div class="footer-bottom">
+                <p>&copy; 2024 Gentility Tech Global. All Rights Reserved.</p>
+                <a href="#" class="back-to-top">Back to Top</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Populate the main project with details from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const title = localStorage.getItem('projectTitle');
+            const description = localStorage.getItem('projectDescription');
+
+            if (title && description) {
+                document.getElementById('main-project-title').textContent = title;
+                document.getElementById('main-project-description').textContent = description;
+                document.getElementById('main-project-link').setAttribute('href', '#'); // Add the actual project link
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'assets/img/IMG-20231001-WA0022.jpg',
             content: `
                 <p>This is the full content of Blog Post 1. It includes detailed information, images, and possibly embedded videos.</p>
-                <iframe src="https://player.vimeo.com/video/975351736" frameborder="0" allowfullscreen></iframe>
+                <video src="https://player.vimeo.com/video/975351736" frameborder="0" allowfullscreen></video>
             `,
         },
         2: {
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'assets/img/IMG-20231001-WA0022.jpg',
             content: `
                 <p>This is the full content of Blog Post 1. It includes detailed information, images, and possibly embedded videos.</p>
-                <iframe src="https://player.vimeo.com/video/975351736" frameborder="0" allowfullscreen></iframe>
+                <video src="https://player.vimeo.com/video/975351736" frameborder="0" allowfullscreen></video>
             `,
         },
         4: {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'assets/img/IMG-20231001-WA0022.jpg',
             content: `
                 <p>This is the full content of Blog Post 1. It includes detailed information, images, and possibly embedded videos.</p>
-                <iframe src="https://player.vimeo.com/video/975351736" frameborder="0" allowfullscreen></iframe>
+                <video src="https://player.vimeo.com/video/975351736" frameborder="0" allowfullscreen></video>
             `,
         },
         6: {
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'assets/img/IMG-20231001-WA0022.jpg',
             content: `
                 <p>This is the full content of Blog Post 1. It includes detailed information, images, and possibly embedded videos.</p>
-                <iframe src="https://player.vimeo.com/video/975351736" frameborder="0" allowfullscreen></iframe>
+                <video src="https://player.vimeo.com/video/975351736" frameborder="0" allowfullscreen></video>
             `,
         },
         8: {

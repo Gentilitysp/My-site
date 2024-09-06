@@ -190,7 +190,7 @@ header {
 /* Additional Media Queries for Smaller Devices */
 
 /* Devices with a screen width of 600px or less */
-@media (max-width: 600px) and (max-width: 767px) {
+@media (min-width: 600px) and (max-width: 767px) {
     .navmenu {
         width: 100%;
     }
@@ -218,7 +218,14 @@ header {
 }
 
 /* Devices with a screen width of 400px or less */
-@media (max-width: 400px) and (max-width: 599px) {
+@media (min-width: 400px) and (max-width: 599px) {
+    .header {
+        padding: 15px;
+        margin: 0;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
     .navmenu {
         width: 100%;
     }
@@ -250,7 +257,7 @@ header {
 }
 
 /* Devices with a screen width of 300px or less */
-@media (max-width: 300px) and (max-width: 399px) {
+@media (min-width: 300px) and (max-width: 399px) {
     .header {
         padding: 15px;
         margin: 0;
@@ -355,7 +362,7 @@ header {
         padding: 15px 0;
     }
     .social-l {
-        flex-direction: column;
+        flex-direction: row;
         gap: 10px;
     }
     .social-l a {
@@ -473,7 +480,7 @@ header {
 
 .slide img {
     width: 100%;
-    height: 130vh;
+    height: 220vh;
     object-fit: cover;
     position: absolute;
     top: 0;
@@ -548,6 +555,7 @@ header {
         font-size: 1.5rem;
     }
 }
+
 
 /* About Section */
 #about {
@@ -642,47 +650,70 @@ header {
 /* Responsive Design */
 @media (max-width: 768px) {
     .about-content {
-        flex-direction: column;
+        flex-direction: row;
         text-align: center;
     }
 
     .profile-pics {
+        position: absolute;
+        width: 25%;
+        height: 40%;
         margin-bottom: 20px;
         padding-left: 0;
     }
 
     .about-text {
-        margin-left: 0;
+        margin-left: 30%;
         max-width: 100%;
     }
 
     #about h2 {
+        margin-top: 50px;
         font-size: 2rem;
     }
 
     .about-text h3 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 
     .about-text h4 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
     .about-text p {
         font-size: 0.95rem;
+        padding-bottom: 40px;
     }
 }
 
 @media (max-width: 480px) {
     .profile-pics {
-        width: 150px;
+        width: 90px;
+    }
+    #about h2 {
+        padding-top: 80px;
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .about-text h3 {
+        font-size: 1.2rem;
+    }
+
+    .about-text h4 {
+        font-size: 1.2rem;
+    }
+
+    .about-text p {
+        font-size: 0.85rem;
+        padding-bottom: 60px;
     }
 }
     
 
 /* Skills Section */
 #skills {
-    background-color: #f5f5f5;
+    background-color: #f0f0f0;
     /* padding: 30px 0; */
     display: flex;
     justify-content: center;
@@ -738,18 +769,20 @@ header {
 @media (max-width: 1024px) {
     .skill {
         flex: 0 1 48%; /* Adjusts to 2 cards in a row */
+        margin: 0 5px 20px
     }
 }
 
 @media (max-width: 768px) {
     .skill {
         flex: 1 1 100%; /* Adjusts to 1 card in a row */
+        margin: 0 5px 20px;
     }
 }
 
 @media (max-width: 481px) and (max-width: 768px) {
-    .skill {
-        flex: 1 1 30%;
+    .skills-grid {
+        justify-content: space-between;
     }
 }
 
@@ -857,7 +890,7 @@ header {
 
 /* Tutorials Section */
 #tutorials {
-    padding: 10px 0;
+    /* padding: 10px 0; */
     background-color: #999;
     position: relative;
     display: flex;
@@ -869,7 +902,7 @@ header {
 #tutorials h2 {
     text-align: center;
     font-size: 2.5rem;
-    color: #007acc;
+    color: #dbe0e3;
     margin-bottom: 40px;
 }
 
@@ -898,14 +931,38 @@ header {
     flex: 0 0 calc(100% / 3.5); /* 3.5 videos on large screens */
     max-width: calc(100% / 3.5); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
 }
 
-.tutorial iframe {
+.tutorial.expanded {
+    transition: all 0.3s ease;
+    transform: scale(1.05); /* Optional for a slight zoom effect */
+}
+
+
+.tutorial video {
     width: 100%;
     height: 200px;
     border-radius: 10px;
     margin-bottom: 15px;
     justify-content: center;
+}
+
+.video-container {
+    position: relative;
+    display: inline-block;
+}
+
+.mute-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
 }
 
 .tutorial h3 {
@@ -1311,6 +1368,11 @@ header {
         padding-left: 15px; /* Adjust the padding-left for smaller screens */
     }
 
+    #contact textarea {
+        min-width: 100%;
+        min-height: 150px;
+    }
+
     #contact .form-group {
         flex-direction: column;
         align-items: stretch;
@@ -1691,3 +1753,4 @@ footer {
         justify-content: center;
     }
 }
+
