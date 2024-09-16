@@ -1,3 +1,78 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.querySelector('#menu-toggle');
+    const navMenu = document.querySelector('#navmenu');
+    const searchIcon = document.querySelector('#search-icon');
+    const searchContainer = document.querySelector('#search-container');
+    const searchClose = document.querySelector('#search-close');
+    const searchInput = document.querySelector('#search-input');
+    const searchButton = document.querySelector('#search-btn');
+    const searchableItems = document.querySelectorAll('.searchable-item');
+
+    // Toggle navmenu on hamburger click
+    menuToggle.addEventListener('click', function () {
+        navMenu.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+    });
+
+    // Show search bar when search icon is clicked
+    searchIcon.addEventListener('click', function (e) {
+        e.preventDefault();
+        console.log("Opening")
+        searchContainer.classList.toggle('active');
+    });
+
+    // Close search bar on clicking close button
+    searchClose.addEventListener('click', function () {
+        searchContainer.classList.remove('active');
+        searchInput.value = ''; // Clear search input when closing
+        resetResults(); // Reset all content visibility
+    });
+
+    // Function to reset all searchable items (display everything)
+    function resetResults() {
+        searchableItems.forEach(item => {
+            item.style.display = 'block'; // Show all items
+        });
+    }
+
+    // Function to filter search results across searchable items
+    function filterResults() {
+        const query = searchInput.value.toLowerCase().trim(); // Get search query
+        if (query === "") {
+            resetResults(); // If the query is empty, reset all results
+        } else {
+            let matchFound = false; // Track if any matches are found
+            searchableItems.forEach(item => {
+                // Check if the element (or its children) contains text and matches the query
+                if (item.innerText.toLowerCase().includes(query)) {
+                    item.style.display = 'block'; // Show the item if it matches the query
+                    matchFound = true;
+                } else {
+                    item.style.display = 'none'; // Hide the item if it doesn't match
+                }
+            });
+
+            if (!matchFound) {
+                console.log('No matches found for query: ', query); // Debug message for no matches
+            }
+        }
+    }
+
+    // Search button click event
+    searchButton.addEventListener('click', function () {
+        filterResults(); // Trigger search on button click
+    });
+
+    // Search using "Enter" key
+    searchInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Prevent page refresh
+            filterResults(); // Trigger search on Enter press
+        }
+    });
+});
+
+
 // Hero Section JS
 document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.slide'); // Get all slides
@@ -94,10 +169,100 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const tutorialsWrapper = document.querySelector('.tutorials-wrapper');
+    const tutorialSlide = document.querySelector('.tutorial-slide');
+    const tutorialCards = document.querySelectorAll('.tutorial');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    let currentIndex = 0;
+    let visibleCards = 3.5; // Default for larger screens
+    let totalCards = tutorialCards.length;
+
+    // Function to determine the number of visible cards based on screen size
+    function calculateVisibleCards() {
+        const screenWidth = window.innerWidth;
+
+        if (screenWidth <= 450) {
+        visibleCards = 1; // For small screens
+        } else if (screenWidth <= 768) {
+        visibleCards = 2.5; // For medium screens
+        } else {
+            visibleCards = 3.5; // For large screens
+        }
+
+        // Set the correct flex-basis for the cards based on the screen size
+        tutorialCards.forEach(card => {
+            card.style.flex = `0 0 calc(100% / ${visibleCards})`;
+            card.style.maxWidth = `calc(100% / ${visibleCards})`;
+        });
+    }
+
+    // Function to calculate total width of all slides
+    function getSlideWidth() {
+        return tutorialCards[0].getBoundingClientRect().width + parseInt(window.getComputedStyle(tutorialCards[0]).marginRight);
+    }
+
+    // Scroll the carousel to the next set of slides
+    function scrollCarousel(direction) {
+        const slideWidth = getSlideWidth();
+
+        if (direction === 'next') {
+            currentIndex++;
+            if (currentIndex > totalCards - visibleCards) {
+                currentIndex = 0; // Loop back to start
+            }
+        } else if (direction === 'prev') {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = totalCards - Math.ceil(visibleCards); // Loop to the last set of slides
+            }
+     }
+
+        tutorialSlide.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
+
+    // Add event listeners for buttons
+    nextBtn.addEventListener('click', () => scrollCarousel('next'));
+    prevBtn.addEventListener('click', () => scrollCarousel('prev'));
+
+    // Recalculate visible cards and slide widths on window resize
+    window.addEventListener('resize', function () {
+    calculateVisibleCards();
+    });
+
+    // Initial setup
+    calculateVisibleCards();
+
+    // Optional: Auto-scroll the carousel if needed
+    setInterval(() => {
+        scrollCarousel('next');
+    }, 10000); // Auto-scroll every 10 seconds
+
+    // Handle card click to expand and navigate
+    tutorialCards.forEach((card, index) => {
+        card.addEventListener('click', function () {
+            // Set the clicked card to expand to 70% of the screen width
+            tutorialCards.forEach(c => {
+                c.style.flex = '0 0 30%'; // Shrink other cards to 30%
+                c.style.maxWidth = '30%';
+            });
+            card.style.flex = '0 0 70%'; // Expand clicked card to 70%
+            card.style.maxWidth = '70%';
+        
+            // Optional: Add a class for expanded view if necessary
+            card.classList.add('expanded');
+
+            // Redirect the user to the tutorial page (you can customize the URL here)
+            window.location.href = `/tutorials/${index + 1}`; // Assuming the URL for the tutorial pages are structured this way
+        });
+    });
+});
 
 
 
-
+// Portfolio Homepage
 document.addEventListener('DOMContentLoaded', () => {
     // Get all the "View Project" links
     const projectLinks = document.querySelectorAll('.project a');

@@ -24,8 +24,8 @@
                 <li><a href="#">Services</a></li>
                 <li><a href="#">Blog</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="#"><img src="assets/icons/user-6767 (1).png" alt="User">Sign up</a></li>
-                <li><a href="#"><img src="/assets/icons/search-2903 (1).png" alt="Search"></a></li>
+                <li><a id="user" href="#"><img src="assets/icons/user-6767 (1).png" alt="User">Sign up</a></li>
+                <li><a id="search-icon" href="#"><img src="/assets/icons/search-2903 (1).png" alt="Search"></a></li>
             </ul>
         </nav>
         <div id="menu-toggle" class="menu-toggle">
@@ -33,8 +33,23 @@
             <span></span>
             <span></span>
         </div>
+        <div id="search-container" class="search-container">
+            <input type="text" id="search-input" placeholder="Search...">
+            <button id="search-btn">Search</button>
+            <button id="search-close">&times;</button>
+        </div>
     </header>
     
+     <!-- Searchable content -->
+     <section class="content-section">
+        <div class="searchable-item">Blogs</div>
+        <div class="searchable-item">Portfolio</div>
+        <div class="searchable-item">Tutorials</div>
+        <div class="searchable-item">Services</div>
+        <div class="searchable-item">Skills</div>
+        <div class="searchable-item">Testimonial</div>
+    </section>
+
     <!-- Social Links -->
     <section id="Social-M">
         <div class="container">
@@ -98,7 +113,7 @@
 
      <!-- Skills Section -->
       <section id="skills">
-        <div class="container">
+        <div class="container searchable-item">
             <h2>Skills</h2>
             <div class="skills-grid">
                 <div class="skill">
@@ -399,100 +414,5 @@
      <script src="general.js"></script>
      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-     <!-- JavaScript -->
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tutorialsWrapper = document.querySelector('.tutorials-wrapper');
-            const tutorialSlide = document.querySelector('.tutorial-slide');
-            const tutorialCards = document.querySelectorAll('.tutorial');
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-
-            let currentIndex = 0;
-            let visibleCards = 3.5; // Default for larger screens
-            let totalCards = tutorialCards.length;
-
-            // Function to determine the number of visible cards based on screen size
-            function calculateVisibleCards() {
-                const screenWidth = window.innerWidth;
-
-                if (screenWidth <= 450) {
-                visibleCards = 1; // For small screens
-                } else if (screenWidth <= 768) {
-                visibleCards = 2.5; // For medium screens
-                } else {
-                    visibleCards = 3.5; // For large screens
-                }
-
-                // Set the correct flex-basis for the cards based on the screen size
-                tutorialCards.forEach(card => {
-                    card.style.flex = `0 0 calc(100% / ${visibleCards})`;
-                    card.style.maxWidth = `calc(100% / ${visibleCards})`;
-                });
-            }
-
-            // Function to calculate total width of all slides
-            function getSlideWidth() {
-                return tutorialCards[0].getBoundingClientRect().width + parseInt(window.getComputedStyle(tutorialCards[0]).marginRight);
-            }
-
-            // Scroll the carousel to the next set of slides
-            function scrollCarousel(direction) {
-                const slideWidth = getSlideWidth();
-
-                if (direction === 'next') {
-                    currentIndex++;
-                    if (currentIndex > totalCards - visibleCards) {
-                        currentIndex = 0; // Loop back to start
-                    }
-                } else if (direction === 'prev') {
-                    currentIndex--;
-                    if (currentIndex < 0) {
-                        currentIndex = totalCards - Math.ceil(visibleCards); // Loop to the last set of slides
-                    }
-             }
-
-                tutorialSlide.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-            }
-
-            // Add event listeners for buttons
-            nextBtn.addEventListener('click', () => scrollCarousel('next'));
-            prevBtn.addEventListener('click', () => scrollCarousel('prev'));
-
-            // Recalculate visible cards and slide widths on window resize
-            window.addEventListener('resize', function () {
-            calculateVisibleCards();
-            });
-
-            // Initial setup
-            calculateVisibleCards();
-
-            // Optional: Auto-scroll the carousel if needed
-            setInterval(() => {
-                scrollCarousel('next');
-            }, 10000); // Auto-scroll every 10 seconds
-
-            // Handle card click to expand and navigate
-            tutorialCards.forEach((card, index) => {
-                card.addEventListener('click', function () {
-                    // Set the clicked card to expand to 70% of the screen width
-                    tutorialCards.forEach(c => {
-                        c.style.flex = '0 0 30%'; // Shrink other cards to 30%
-                        c.style.maxWidth = '30%';
-                    });
-                    card.style.flex = '0 0 70%'; // Expand clicked card to 70%
-                    card.style.maxWidth = '70%';
-                
-                    // Optional: Add a class for expanded view if necessary
-                    card.classList.add('expanded');
-
-                    // Redirect the user to the tutorial page (you can customize the URL here)
-                    window.location.href = `/tutorials/${index + 1}`; // Assuming the URL for the tutorial pages are structured this way
-                });
-            });
-        });
-
-    </script>
 </body>
 </html>

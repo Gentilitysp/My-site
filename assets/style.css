@@ -19,23 +19,21 @@ img, iframe {
     height: auto;
 }
 
-/* Header */
-/* Header and Navigation Styling */
+/* Header Styling */
 header {
     background-color: #333;
     color: #fff;
-    padding: 5px 10px;
+    padding: 5px 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    width: 100%;
     top: 0;
+    width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo Styling */
+/* Logo */
 .logo {
     display: flex;
     align-items: center;
@@ -50,7 +48,7 @@ header {
 
 .logo a {
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #f4f4f4;
     transition: color 0.3s ease;
@@ -60,262 +58,197 @@ header {
     color: #00bcd4;
 }
 
-/* Navigation Menu Styling */
+/* Navigation Menu */
+.navmenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .navmenu ul {
     list-style-type: none;
-    display: flex;
+    display: flex; 
     margin: 0;
     padding: 0;
 }
 
 .navmenu ul li {
-    margin: 0 5px;
-    position: relative;
+    margin-left: 20px;
 }
 
 .navmenu ul li a {
+    color: #fff;
     text-decoration: none;
-    color: #f4f4f4;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-    padding: 5px 0;
+    font-size: 1rem;
     display: block;
+    padding: 5px 5px;
+    transition: color 0.3s ease;
+}
+
+.navmenu ul li a img {
+    filter: brightness(0) invert(5);
 }
 
 .navmenu ul li a:hover {
     color: #00bcd4;
-    border-bottom: 2px solid #00bcd4;
 }
 
-/* Sign Up and Search Icon Styling */
-.navmenu ul li a img {
+/* Search Icon */
+.navmenu ul li img {
     width: 18px;
-    height: auto;
     vertical-align: middle;
-    margin-right: 5px;
-    filter: invert(100%);
 }
 
-/* Hamburger Menu Styling */
+/* Hamburger Menu - Initially hidden on large screens */
 .menu-toggle {
     display: none;
+    cursor: pointer;
     flex-direction: column;
     justify-content: space-between;
     width: 25px;
     height: 18px;
-    cursor: pointer;
 }
 
 .menu-toggle span {
     background-color: #fff;
-    height: 1.5px;
+    height: 2px;
     width: 100%;
     transition: all 0.3s ease;
 }
 
-/* Responsive Navigation */
-@media (max-width: 768px) and (max-width: 1200px) {
-    .navmenu {
-        position: fixed;
-        top: 60px;
-        right: -100%;
-        background-color: #333;
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: right 0.3s ease;
-        flex-direction: column;
-        z-index: 999;
-        overflow-x: hidden;
-    }
+/* Mobile Menu */
+.navmenu.active {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: #333;
+    width: 30%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+    z-index: 999;
+}
 
+.navmenu ul.active {
+    flex-direction: column;
+    align-items: center;
+}
+
+.navmenu ul li {
+    margin: 10px 0;
+}
+
+/* Search Container */
+.search-container {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 700;
+    border-radius: 5px;
+    width: 30%;
+    transition: all 0.3s ease;
+}
+
+.search-container.active .searchable-item {
+    display: block;
+}
+
+#search-input {
+    padding: 8px;
+    width: calc(100% - 50px);
+    border: 1px solid #ddd;
+    border-radius: 3px 0 0 3px;
+    display: inline-block;
+    /* float: left; */
+}
+
+#search-btn {
+    padding: 8px 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 3px 3px 0;
+    float: left;
+    height: 100%;
+}
+
+#search-btn:hover {
+    background-color: #00bcd4;
+}
+#search-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+#search-close:hover {
+    color: red;
+}
+
+/* Searchable Item Styling */
+.searchable-item {
+    display: none;
+    /* padding: 10px 0;
+    color: #333;
+    font-size: 1rem; */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    .navmenu {
+        display: none; 
+    }
+    .navmenu.active {
+        display: flex;
+    }
     .navmenu ul {
         flex-direction: column;
         align-items: center;
     }
-
-    .navmenu ul li {
-        margin: 20px 0;
+    .logo img {
+        width: 30px;
+        height: 30px;
     }
-
-    .navmenu ul li:last-child {
-        margin-bottom: 60px;
+    .search-container {
+        width: 80%;
     }
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    .menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
-
-    .navmenu.active {
-        right: 0;
-    }
-}
-
-/* Show Only User and Search Icons on Phone */
-@media (max-width: 768px) and (max-width: 1200px) {
-    .navmenu ul li:not(:last-child):not(:nth-last-child(2)) {
+    #search-btn {
         display: none;
     }
-}
-
-/* Search and User Icon Styling for Hamburger Menu */
-.navmenu ul li:last-child a,
-.navmenu ul li:nth-last-child(2) a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow-x: hidden;
-}
-
-.navmenu ul li:last-child a img,
-.navmenu ul li:nth-last-child(2) a img {
-    width: 22px;
-    height: auto;
-}
-
-/* Additional Media Queries for Smaller Devices */
-
-/* Devices with a screen width of 600px or less */
-@media (min-width: 600px) and (max-width: 767px) {
-    .navmenu {
+    #search-input {
         width: 100%;
     }
-
-    .logo a {
-        font-size: 1.1rem;
-    }
-
-    .navmenu ul li a {
-        font-size: 0.85rem;
-    }
-
-    .navmenu ul li a img {
-        width: 16px;
-    }
-
-    .menu-toggle {
-        width: 22px;
-        height: 16px;
-    }
-
-    .menu-toggle span {
-        height: 1.2px;
-    }
 }
 
-/* Devices with a screen width of 400px or less */
-@media (min-width: 400px) and (max-width: 599px) {
-    .header {
-        padding: 15px;
-        margin: 0;
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-    .navmenu {
-        width: 100%;
-    }
-
+@media screen and (max-width: 400px) {
     .logo a {
         font-size: 1rem;
     }
-
     .navmenu ul li a {
-        font-size: 0.8rem;
-    }
-
-    .navmenu ul li a img {
-        width: 14px;
-    }
-
-    .menu-toggle {
-        width: 20px;
-        height: 14px;
-    }
-
-    .menu-toggle span {
-        height: 1px;
-    }
-
-    .navmenu {
-        top: 50px;
-    }
-}
-
-/* Devices with a screen width of 300px or less */
-@media (min-width: 300px) and (max-width: 399px) {
-    .header {
-        padding: 15px;
-        margin: 0;
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-    .logo a {
         font-size: 0.9rem;
     }
-
-    .navmenu ul li a {
-        font-size: 0.75rem;
-    }
-
-    .navmenu ul li a img {
-        width: 12px;
-    }
-
-    .menu-toggle {
-        width: 18px;
-        height: 12px;
-    }
-
-    .menu-toggle span {
-        height: 0.8px;
+    .search-container {
+        width: 80%;
+        top: 80px;
     }
 }
-
-/* Larger Screens (Above 1200px) */
-@media (min-width: 1200px) {
-    .logo a {
-        font-size: 1.5rem;
-    }
-
-    .navmenu ul li a {
-        font-size: 1rem;
-    }
-
-    .navmenu ul li {
-        margin: 0 10px;
-    }
-
-    .navmenu ul li a img {
-        width: 20px;
-    }
-
-    .menu-toggle {
-        width: 28px;
-        height: 20px;
-    }
-
-    .menu-toggle span {
-        height: 2px;
-    }
-}
-
-
 
 /* Social Media Section */
 #Social-M, #home {
