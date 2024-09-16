@@ -17,43 +17,63 @@ document.addEventListener('DOMContentLoaded', function () {
     // Show search bar when search icon is clicked
     searchIcon.addEventListener('click', function (e) {
         e.preventDefault();
-        console.log("Opening")
         searchContainer.classList.toggle('active');
     });
 
     // Close search bar on clicking close button
     searchClose.addEventListener('click', function () {
         searchContainer.classList.remove('active');
-        searchInput.value = ''; // Clear search input when closing
-        resetResults(); // Reset all content visibility
+        searchInput.value = ''; 
+        resetResults();
     });
 
     // Function to reset all searchable items (display everything)
     function resetResults() {
         searchableItems.forEach(item => {
-            item.style.display = 'block'; // Show all items
+            item.style.setProperty('display', 'block', 'important'); // Ensure all items are shown
+            console.log('Showing all items initially');
         });
+        hideResultsContainer(); // Hide results container initially
+    }
+
+    // Function to show the container for displaying search results
+    function showResultsContainer() {
+        const resultsContainer = document.querySelector('.results-container');
+        resultsContainer.style.display = 'block'; // Show the container
+    }
+
+    // Function to hide the results container
+    function hideResultsContainer() {
+        const resultsContainer = document.querySelector('.results-container');
+        resultsContainer.style.display = 'none'; // Hide the container
     }
 
     // Function to filter search results across searchable items
     function filterResults() {
         const query = searchInput.value.toLowerCase().trim(); // Get search query
+
+        // Reset results if the query is empty
         if (query === "") {
-            resetResults(); // If the query is empty, reset all results
+            resetResults();
         } else {
-            let matchFound = false; // Track if any matches are found
+            let matchFound = false;
+
             searchableItems.forEach(item => {
-                // Check if the element (or its children) contains text and matches the query
+                // Check if the item text includes the search query
                 if (item.innerText.toLowerCase().includes(query)) {
-                    item.style.display = 'block'; // Show the item if it matches the query
+                    item.style.setProperty('display', 'block', 'important'); // Show the matching item
                     matchFound = true;
                 } else {
-                    item.style.display = 'none'; // Hide the item if it doesn't match
+                    item.style.setProperty('display', 'none', 'important'); // Hide the non-matching item
                 }
             });
 
-            if (!matchFound) {
-                console.log('No matches found for query: ', query); // Debug message for no matches
+            if (matchFound) {
+                console.log('Match found for:', query);
+                showResultsContainer(); // Show results only if matches are found
+            } else {
+                console.log('No matches found for query:', query); // Debug message for no matches
+                hideResultsContainer(); // Hide results if no matches are found
             }
         }
     }
@@ -63,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
         filterResults(); // Trigger search on button click
     });
 
-    // Search using "Enter" key
+    // Search using the "Enter" key
     searchInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             e.preventDefault(); // Prevent page refresh

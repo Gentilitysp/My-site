@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gentility Tech Global</title>
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="/assets/style.css?v=1.1">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
@@ -20,10 +21,10 @@
                 <li><a href="#about">About Me</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="tutorials">Tutorials</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#tutorials">Tutorials</a></li>
+                <li><a href="#services.html">Services</a></li>
+                <li><a href="#blog.html">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li><a id="user" href="#"><img src="assets/icons/user-6767 (1).png" alt="User">Sign up</a></li>
                 <li><a id="search-icon" href="#"><img src="/assets/icons/search-2903 (1).png" alt="Search"></a></li>
             </ul>
@@ -33,21 +34,24 @@
             <span></span>
             <span></span>
         </div>
-        <div id="search-container" class="search-container">
-            <input type="text" id="search-input" placeholder="Search...">
-            <button id="search-btn">Search</button>
-            <button id="search-close">&times;</button>
-        </div>
     </header>
     
-     <!-- Searchable content -->
-     <section class="content-section">
-        <div class="searchable-item">Blogs</div>
-        <div class="searchable-item">Portfolio</div>
-        <div class="searchable-item">Tutorials</div>
-        <div class="searchable-item">Services</div>
-        <div class="searchable-item">Skills</div>
-        <div class="searchable-item">Testimonial</div>
+    <div id="search-container" class="search-container">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button id="search-btn">Search</button>
+        <button id="search-close">&times;</button>
+    </div>
+
+    <!-- Search results container -->
+    <section class="results-container">
+        <div class="content-section">
+            <div class="searchable-item">Blogs</div>
+            <div class="searchable-item">Portfolio</div>
+            <div class="searchable-item">Tutorials</div>
+            <div class="searchable-item">Services</div>
+            <div class="searchable-item">Skills</div>
+            <div class="searchable-item">Testimonial</div>
+        </div>
     </section>
 
     <!-- Social Links -->
@@ -113,7 +117,7 @@
 
      <!-- Skills Section -->
       <section id="skills">
-        <div class="container searchable-item">
+        <div class="container">
             <h2>Skills</h2>
             <div class="skills-grid">
                 <div class="skill">
@@ -372,7 +376,7 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container footer-container">
+        <div class="footer-container">
             <div class="footer-logo">
                 <a href="/"><img src="assets/img/myLogo.png" alt="Gentility Tech Global Logo"></a>
              <a href="/" class="company-name">Gentility Tech Global</a>
