@@ -205,9 +205,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const screenWidth = window.innerWidth;
 
         if (screenWidth <= 450) {
-        visibleCards = 1; // For small screens
+            visibleCards = 1; // For small screens
         } else if (screenWidth <= 768) {
-        visibleCards = 2.5; // For medium screens
+            visibleCards = 2.5; // For medium screens
         } else {
             visibleCards = 3.5; // For large screens
         }
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (currentIndex < 0) {
                 currentIndex = totalCards - Math.ceil(visibleCards); // Loop to the last set of slides
             }
-     }
+        }
 
         tutorialSlide.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
     }
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Recalculate visible cards and slide widths on window resize
     window.addEventListener('resize', function () {
-    calculateVisibleCards();
+        calculateVisibleCards();
     });
 
     // Initial setup
@@ -260,25 +260,25 @@ document.addEventListener('DOMContentLoaded', function () {
         scrollCarousel('next');
     }, 10000); // Auto-scroll every 10 seconds
 
-    // Handle card click to expand and navigate
-    tutorialCards.forEach((card, index) => {
+    // Handle card click or full-screen button click to navigate to tutorials.html
+    tutorialCards.forEach((card) => {
+        // Add event listener to the card itself
         card.addEventListener('click', function () {
-            // Set the clicked card to expand to 70% of the screen width
-            tutorialCards.forEach(c => {
-                c.style.flex = '0 0 30%'; // Shrink other cards to 30%
-                c.style.maxWidth = '30%';
-            });
-            card.style.flex = '0 0 70%'; // Expand clicked card to 70%
-            card.style.maxWidth = '70%';
-        
-            // Optional: Add a class for expanded view if necessary
-            card.classList.add('expanded');
-
-            // Redirect the user to the tutorial page (you can customize the URL here)
-            window.location.href = `/tutorials/${index + 1}`; // Assuming the URL for the tutorial pages are structured this way
+            // Redirect the user to tutorials.html
+            window.location.href = '/tutorials.html';
         });
+
+        // If there's a full-screen button inside the card, add a click listener to it
+        const fullScreenButton = card.querySelector('.fullscreen-btn');
+        if (fullScreenButton) {
+            fullScreenButton.addEventListener('click', function (event) {
+                event.stopPropagation(); // Prevent card click event from firing
+                window.location.href = '/tutorials.html'; // Redirect to the tutorials page
+            });
+        }
     });
 });
+
 
 
 

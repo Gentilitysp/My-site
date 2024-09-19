@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gentility Tech Global</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="tutorials.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div id="logo" class="logo">
+            <a href=""><img src="assets/img/myLogo.png" alt="Logo"></a>
+            <a href="">GTG - Gentility Tech Global</a>
+        </div>
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="tutorials">Tutorials</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a id="user" href="#"><img src="assets/icons/user-6767 (1).png" alt="User">Sign up</a></li>
+                <li><a id="search-icon" href="#"><img src="/assets/icons/search-2903 (1).png" alt="Search"></a></li>
+            </ul>
+        </nav>
+        <div id="menu-toggle" class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    
+    <div id="search-container" class="search-container">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button id="search-btn">Search</button>
+        <button id="search-close">&times;</button>
+    </div>
+
+    <!-- Search results container -->
+    <section class="results-container">
+        <div class="content-section">
+            <div class="searchable-item">Blogs</div>
+            <div class="searchable-item">Portfolio</div>
+            <div class="searchable-item">Tutorials</div>
+            <div class="searchable-item">Services</div>
+            <div class="searchable-item">Skills</div>
+            <div class="searchable-item">Testimonial</div>
+        </div>
+    </section>
+
+    <!-- Social Links -->
+    <section id="Social-M">
+        <div class="container">
+            <div class="social-l">
+                <a href="#"><img src="assets/icons/linkedin-130.png" alt="Linkedin">Linkedin</a>
+                <a href="#"><img src="assets/icons/github-logo-6532.png" alt="Github">Github</a>
+                <a href="#"><img src="assets/icons/twitter-x-logo-black-square-rounded-20852.png" alt="Twitter">Twitter</a>
+                <a href="#"><img src="assets/icons/whatsapp-logo-4456.png" alt="Whatsapp">Whatsapp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorials Section -->
+    <section class="tutorials-section">
+        <div class="tutorials-container">
+            <div class="tutorial-header">
+                <h2>Featured Tutorials</h2>
+                <div class="filter-options">
+                    <select id="filter-options">
+                        <option value="recent">Most Recent</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="trending">Trending</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Tutorials Grid -->
+<div id="tutorial-grid" class="tutorial-grid">
+    <!-- Tutorial Card Example with Child Videos -->
+    <div class="tutorial-card" data-tutorial-id="1">
+        <div class="video-container">
+            <video src="assets/videos/VID-20240720-WA0001.mp4" controls></video>
+        </div>
+        <div class="tutorial-info">
+            <h3>Tutorial 1</h3>
+            <p>This tutorial contains 5 videos.</p>
+            <button class="watch-btn" onclick="openTutorial(1)">Watch Now</button>
+        </div>
+    </div>
+
+    <div class="tutorial-card" data-tutorial-id="2">
+        <div class="video-container">
+            <video src="assets/videos/VID-20240808-WA0015.mp4" controls></video>
+        </div>
+        <div class="tutorial-info">
+            <h3>Tutorial 2</h3>
+            <p>This tutorial contains 5 videos.</p>
+            <button class="watch-btn" onclick="openTutorial(2)">Watch Now</button>
+        </div>
+    </div>
+
+    <div class="tutorial-card" data-tutorial-id="3">
+        <div class="video-container">
+            <video src="assets/videos/VID-20240720-WA0001.mp4" controls></video>
+        </div>
+        <div class="tutorial-info">
+            <h3>Tutorial 3</h3>
+            <p>This tutorial contains 5 videos.</p>
+            <button class="watch-btn" onclick="openTutorial(3)">Watch Now</button>
+        </div>
+    </div>
+
+    <div class="tutorial-card" data-tutorial-id="4">
+        <div class="video-container">
+            <video src="assets/videos/VID-20240720-WA0001.mp4" controls></video>
+        </div>
+        <div class="tutorial-info">
+            <h3>Tutorial 4</h3>
+            <p>This tutorial contains 5 videos.</p>
+            <button class="watch-btn" onclick="openTutorial(4)">Watch Now</button>
+        </div>
+    </div>
+    <!-- Add more tutorials -->
+</div>
+
+
+            <!-- Video Display Section (Hidden until a tutorial is clicked) -->
+            <div id="video-display" class="video-display hidden">
+                <div class="main-video" id="main-video">
+                    <video id="video-player" src="" controls></video>
+                    <div id="transcription" class="transcription">
+                        <!-- Transcribed text will be displayed here -->
+                        <p>Transcribed content will appear here...</p>
+                    </div>
+                </div>
+
+                <!-- Associated Child Videos of the Selected Tutorial -->
+                <div class="child-videos" id="child-videos">
+                    <h3>Videos in this Tutorial</h3>
+                    <div id="child-list">
+                        <!-- List of child videos will be dynamically added here -->
+                    </div>
+                </div>
+                
+                <!-- Related Tutorials (Other tutorials) -->
+                <div class="related-videos" id="related-videos">
+                    <h3>Related Tutorials</h3>
+                    <div id="related-list">
+                        <!-- List of related videos will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <a href="/"><img src="assets/img/myLogo.png" alt="Gentility Tech Global Logo"></a>
+             <a href="/" class="company-name">Gentility Tech Global</a>
+         </div>
+        
+            <div class="footer-nav">
+             <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        
+            <div class="footer-social">
+                <ul>
+                    <li><a href="#"><img src="assets/icons/linkedin-130.png" alt="LinkedIn"></a></li>
+                    <li><a href="#"><img src="assets/icons/twitter-x-logo-black-square-rounded-20852.png" alt="Twitter"></a></li>
+                    <li><a href="#"><img src="assets/icons/whatsapp-logo-4456.png" alt="WhatsApp"></a></li>
+                 </ul>
+            </div>
+
+            <div class="footer-contact">
+                <p>Email: <a href="mailto:engrchimaijem@gmail.com">engrchimaijem@gmail.com</a></p>
+                <p>Phone: <a href="tel:+2348160188661">+234 816 018 8661</a></p>
+            </div>
+        
+            <div class="footer-bottom">
+                <p>&copy; 2024 Gentility Tech Global. All Rights Reserved.</p>
+                <a href="#" class="back-to-top">Back to Top</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample data structure for tutorials and child videos
+        const tutorialData = {
+            1: {
+                title: "Tutorial 1",
+                videos: [
+                    { videoSrc: "assets/videos/VID-20240720-WA0001.mp4", title: "Part 1" },
+                    { videoSrc: "assets/videos/tutorial1-video2.mp4", title: "Part 2" },
+                    { videoSrc: "assets/videos/tutorial1-video3.mp4", title: "Part 3" },
+                    { videoSrc: "assets/videos/tutorial1-video4.mp4", title: "Part 4" },
+                    { videoSrc: "assets/videos/tutorial1-video5.mp4", title: "Part 5" }
+                ],
+                transcription: "This is the transcription of tutorial 1.",
+                related: [
+                    { title: "Tutorial 2", videoSrc: "assets/videos/tutorial2.mp4" },
+                    { title: "Tutorial 3", videoSrc: "assets/videos/tutorial3.mp4" }
+                ]
+            }
+            // Add more tutorials as needed
+        };
+
+        let currentVideoIndex = 0;
+
+        function openTutorial(tutorialId) {
+            const selectedTutorial = tutorialData[tutorialId];
+            
+            // Set the first video
+            document.getElementById('video-player').src = selectedTutorial.videos[0].videoSrc;
+            
+            // Display transcription
+            document.getElementById('transcription').innerHTML = selectedTutorial.transcription;
+
+            // Populate child videos
+            const childContainer = document.getElementById('child-list');
+            childContainer.innerHTML = ""; // Clear previous list
+            selectedTutorial.videos.forEach((video, index) => {
+                const videoElement = document.createElement('div');
+                videoElement.className = 'child-video-card';
+                videoElement.innerHTML = `
+                    <video src="${video.videoSrc}" controls></video>
+                    <p>${video.title}</p>
+                `;
+                videoElement.onclick = () => loadChildVideo(tutorialId, index);
+                childContainer.appendChild(videoElement);
+            });
+
+            // Populate related tutorials
+            const relatedContainer = document.getElementById('related-list');
+            relatedContainer.innerHTML = ""; // Clear previous list
+            selectedTutorial.related.forEach(video => {
+                const videoElement = document.createElement('div');
+                videoElement.className = 'related-tutorial-card';
+                videoElement.innerHTML = `
+                    <video src="${video.videoSrc}" controls></video>
+                    <p>${video.title}</p>
+                `;
+                relatedContainer.appendChild(videoElement);
+            });
+
+            // Show video display section and hide tutorials grid
+            document.getElementById('tutorial-grid').classList.add('hidden');
+            document.getElementById('video-display').classList.remove('hidden');
+
+            // Start auto-playing the tutorial videos in sequence
+            currentVideoIndex = 0;
+            const videoPlayer = document.getElementById('video-player');
+            videoPlayer.addEventListener('ended', () => playNextVideo(tutorialId));
+        }
+
+        function loadChildVideo(tutorialId, videoIndex) {
+            const selectedTutorial = tutorialData[tutorialId];
+            const videoPlayer = document.getElementById('video-player');
+            currentVideoIndex = videoIndex;
+            videoPlayer.src = selectedTutorial.videos[videoIndex].videoSrc;
+            videoPlayer.play();
+        }
+
+        // Automatically play the next video when one ends
+        function playNextVideo(tutorialId) {
+            const selectedTutorial = tutorialData[tutorialId];
+            currentVideoIndex++;
+            
+            if (currentVideoIndex < selectedTutorial.videos.length) {
+                loadChildVideo(tutorialId, currentVideoIndex);
+            } else {
+                console.log("All tutorial videos completed.");
+                // Optionally, you can suggest the next tutorial here.
+            }
+        }
+
+        // Video download feature for logged-in users
+        function enableDownload() {
+            const userLoggedIn = true; // Replace this with actual authentication check
+
+            if (userLoggedIn) {
+                const videoPlayer = document.getElementById('video-player');
+                const downloadLink = document.createElement('a');
+                downloadLink.href = videoPlayer.src;
+                downloadLink.download = "tutorial.mp4";  // Set default download filename
+                downloadLink.innerHTML = "Download Video";
+                document.getElementById('main-video').appendChild(downloadLink);
+            }
+        }
+
+    </script>
+</body>
+</html>

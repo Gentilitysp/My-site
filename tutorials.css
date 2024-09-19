@@ -1,0 +1,121 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Tutorials Section */
+.tutorials-section {
+    padding: 40px;
+    background-color: #fff;
+}
+
+.tutorials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tutorial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tutorial-header h2 {
+    font-size: 2em;
+    margin: 0;
+    color: #333;
+}
+
+.filter-options select {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Tutorials Grid */
+.tutorial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 tutorials per row */
+    gap: 20px;
+}
+
+/* Tutorial Card */
+.tutorial-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.tutorial-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Video Container - Increase video height */
+.video-container {
+    width: 100%;
+    height: 250px; /* Increased height */
+    background-color: #000;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Tutorial Info */
+.tutorial-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.tutorial-info h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #333;
+}
+
+.tutorial-info p {
+    color: #666;
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+/* Watch Button */
+.watch-btn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 5px 20px;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.watch-btn:hover {
+    background-color: #218838;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .tutorial-grid {
+        grid-template-columns: repeat(1, 1fr); /* 1 column on smaller screens */
+    }
+
+    .video-container {
+        height: 200px; /* Adjust height for smaller screens */
+    }
+}
