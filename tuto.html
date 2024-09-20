@@ -140,24 +140,6 @@
                         </div>
                     </div>
 
-                    <div class="user-inputs">
-                        <button id="like-btn">👍 Like</button>
-                        <div>
-                            <input type="text" id="comment-box" placeholder="Add a comment">
-                            <button id="submit-comment">Comment</button>
-                        </div>
-                        <div>
-                          <label for="rating">Rate the video:</label>
-                          <select id="rating">
-                            <option value="1">1 Star</option>
-                            <option value="2">2 Stars</option>
-                            <option value="3">3 Stars</option>
-                            <option value="4">4 Stars</option>
-                            <option value="5">5 Stars</option>
-                          </select>
-                        </div>
-                    </div>
-
                     <!-- Side Videos (Child + Related) -->
                     <div id="side-video-container" class="side-video-container">
                         <div class="child-videos">
@@ -218,156 +200,82 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const transcription = document.getElementById("transcription");
-            let currentVideoIndex = 0;
-    
-            // Sample data structure for tutorials and child videos
-            const tutorialData = {
-                1: {
-                    title: "Tutorial 1",
-                    videos: [
-                        { videoSrc: "assets/videos/VID-20240720-WA0001.mp4", title: "Part 1" },
-                        { videoSrc: "assets/videos/tutorial1-video2.mp4", title: "Part 2" },
-                        { videoSrc: "assets/videos/tutorial1-video3.mp4", title: "Part 3" },
-                        { videoSrc: "assets/videos/tutorial1-video4.mp4", title: "Part 4" },
-                        { videoSrc: "assets/videos/tutorial1-video5.mp4", title: "Part 5" }
-                    ],
-                    transcription: "This is the transcription of tutorial 1.",
-                    related: [
-                        { title: "Tutorial 2", videoSrc: "assets/videos/tutorial2.mp4" },
-                        { title: "Tutorial 3", videoSrc: "assets/videos/tutorial3.mp4" }
-                    ]
-                },
-                2: {
-                    title: "Tutorial 2",
-                    videos: [
-                        { videoSrc: "assets/videos/tutorial2-video1.mp4", title: "Intro to Tutorial 2" },
-                        // Add more videos for this tutorial...
-                    ],
-                    transcription: "Transcription for tutorial 2.",
-                    related: [
-                        { title: "Tutorial 1", videoSrc: "assets/videos/VID-20240720-WA0001.mp4" },
-                        { title: "Tutorial 3", videoSrc: "assets/videos/tutorial3.mp4" }
-                    ]
-                }
-                // Add more tutorial data as needed...
-            };
-    
-            // Function to open the tutorial and display videos
-            function openTutorial(tutorialId) {
-                const selectedTutorial = tutorialData[tutorialId];
-                document.getElementById('tutorial-grid').classList.add('hidden');
-                document.getElementById('video-display').classList.add('active');
-                playInMainContainer(selectedTutorial.videos[0].videoSrc, selectedTutorial.transcription);
-    
-                // Populate child videos
-                const childContainer = document.getElementById('child-list');
-                childContainer.innerHTML = "";
-                
-                selectedTutorial.videos.forEach((video, index) => {
-                    const videoElement = document.createElement('div');
-                    videoElement.className = 'child-video-card';
-                    videoElement.innerHTML = `
-                        <video src="${video.videoSrc}" controls></video>
-                        <p>${video.title}</p>
-                    `;
-                    videoElement.onclick = () => loadChildVideo(tutorialId, index);
-                    childContainer.appendChild(videoElement);
-                });
-    
-                // Populate related videos
-                const relatedContainer = document.getElementById('related-list');
-                relatedContainer.innerHTML = "";
-                selectedTutorial.related.forEach((related) => {
-                    const relatedElement = document.createElement('div');
-                    relatedElement.className = 'related-tutorial-card';
-                    relatedElement.innerHTML = `
-                        <video src="${related.videoSrc}" controls></video>
-                        <p>${related.title}</p>
-                    `;
-                    relatedContainer.appendChild(relatedElement);
-                });
+        // Sample data structure for tutorials and child videos
+        const tutorialData = {
+            1: {
+                title: "Tutorial 1",
+                videos: [
+                    { videoSrc: "assets/videos/VID-20240720-WA0001.mp4", title: "Part 1" },
+                    { videoSrc: "assets/videos/tutorial1-video2.mp4", title: "Part 2" },
+                    { videoSrc: "assets/videos/tutorial1-video3.mp4", title: "Part 3" },
+                    { videoSrc: "assets/videos/tutorial1-video4.mp4", title: "Part 4" },
+                    { videoSrc: "assets/videos/tutorial1-video5.mp4", title: "Part 5" }
+                ],
+                transcription: "This is the transcription of tutorial 1.",
+                related: [
+                    { title: "Tutorial 2", videoSrc: "assets/videos/tutorial2.mp4" },
+                    { title: "Tutorial 3", videoSrc: "assets/videos/tutorial3.mp4" }
+                ]
             }
-    
-            // Function to play video in main container and display transcription
-            function playInMainContainer(videoSrc, transcriptionText) {
-                const mainVideo = document.getElementById("video-player");
-                mainVideo.src = videoSrc;
-                transcription.innerHTML = `<p>${transcriptionText}</p>`;
-            }
-    
-            // Function to load a specific child video
-            function loadChildVideo(tutorialId, videoIndex) {
-                const selectedTutorial = tutorialData[tutorialId];
-                const videoSrc = selectedTutorial.videos[videoIndex].videoSrc;
-                const transcriptionText = selectedTutorial.transcription; // Assuming same transcription for simplicity
-                playInMainContainer(videoSrc, transcriptionText);
-            }
-            
-            const transcriptions = {
-                'video1': "This is the transcription for video 1...",
-                'video2': "This is the transcription for video 2..."
-            };
-              
-            function loadTranscription(videoId) {
-                const transcriptionDiv = document.getElementById('transcription');
-                transcriptionDiv.textContent = transcriptions[videoId];
-            }
-              
-            // Call this when the video loads
-            loadTranscription('video1');
-            
-            let likeCount = 0;
-            const likeButton = document.getElementById('like-button');
-            const likeCountDisplay = document.getElementById('like-count');
-              
-            likeButton.addEventListener('click', () => {
-                likeCount++;
-                likeCountDisplay.textContent = likeCount;
-            });
-                            
-            // Example trigger for tutorial opening
-            window.openTutorial = openTutorial;
-    
-            // Add event listeners for video interaction (like, comment, rating)
-            document.getElementById('like-btn').addEventListener('click', function () {
-                alert('You liked this video!');
-            });
-    
-            document.getElementById('submit-comment').addEventListener('click', function () {
-                const comment = document.getElementById('comment-box').value;
-                if (comment.trim()) {
-                    alert(`Comment submitted: ${comment}`);
-                } else {
-                    alert('Please enter a comment.');
-                }
-            });
-    
-            document.getElementById('rating').addEventListener('change', function () {
-                const rating = this.value;
-                alert(`You rated this video: ${rating} star(s)`);
-            });
-        });
+            // Add more tutorials as needed
+        };
 
-        const relatedVideos = {
-            'video1': ['related1', 'related2', 'related3'],
-            'video2': ['related4', 'related5', 'related6']
-          };
-          
-        function loadRelatedVideos(videoId) {
-            const relatedContainer = document.getElementById('related-videos');
-            relatedContainer.innerHTML = '';
-            relatedVideos[videoId].forEach(video => {
-              const videoElement = document.createElement('div');
-              videoElement.textContent = video; // This could be a thumbnail and title instead
-              relatedContainer.appendChild(videoElement);
+        let currentVideoIndex = 0;
+
+        function openTutorial(tutorialId) {
+            const selectedTutorial = tutorialData[tutorialId];
+            
+            // Set the first video
+            document.getElementById('video-player').src = selectedTutorial.videos[0].videoSrc;
+            
+            // Display transcription
+            document.getElementById('transcription').innerHTML = selectedTutorial.transcription;
+
+            // Populate child videos
+            const childContainer = document.getElementById('child-list');
+            childContainer.innerHTML = ""; // Clear previous list
+            selectedTutorial.videos.forEach((video, index) => {
+                const videoElement = document.createElement('div');
+                videoElement.className = 'child-video-card';
+                videoElement.innerHTML = `
+                    <video src="${video.videoSrc}" controls></video>
+                    <p>${video.title}</p>
+                `;
+                videoElement.onclick = () => loadChildVideo(tutorialId, index);
+                childContainer.appendChild(videoElement);
             });
+
+            // Populate related tutorials
+            const relatedContainer = document.getElementById('related-list');
+            relatedContainer.innerHTML = ""; // Clear previous list
+            selectedTutorial.related.forEach(video => {
+                const videoElement = document.createElement('div');
+                videoElement.className = 'related-tutorial-card';
+                videoElement.innerHTML = `
+                    <video src="${video.videoSrc}" controls></video>
+                    <p>${video.title}</p>
+                `;
+                relatedContainer.appendChild(videoElement);
+            });
+
+            // Show video display section and hide tutorials grid
+            document.getElementById('tutorial-grid').classList.add('hidden');
+            document.getElementById('video-display').classList.add('active');
+
+            // Start auto-playing the tutorial videos in sequence
+            currentVideoIndex = 0;
+            const videoPlayer = document.getElementById('video-player');
+            videoPlayer.addEventListener('ended', () => playNextVideo(tutorialId));
         }
-          
-          // Call this when a video is selected
-        loadRelatedVideos('video1');
-        
+
+        function loadChildVideo(tutorialId, videoIndex) {
+            const selectedTutorial = tutorialData[tutorialId];
+            const videoPlayer = document.getElementById('video-player');
+            currentVideoIndex = videoIndex;
+            videoPlayer.src = selectedTutorial.videos[videoIndex].videoSrc;
+            videoPlayer.play();
+        }
+
         // Automatically play the next video when one ends
         function playNextVideo(tutorialId) {
             const selectedTutorial = tutorialData[tutorialId];
@@ -394,7 +302,8 @@
                 document.getElementById('main-video').appendChild(downloadLink);
             }
         }
+
+
     </script>
-    
 </body>
 </html>
